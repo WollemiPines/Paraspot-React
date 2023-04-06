@@ -11,6 +11,8 @@ export default function App() {
   const [long, setLong] = useState([]);
   const [data, setData] = useState([]);
 
+  const api_key = process.env.REACT_APP_API_KEY;
+
   useEffect(() => {
     const fetchData = async () => {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -18,7 +20,7 @@ export default function App() {
         setLong(position.coords.longitude);
       });
 
-      await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
+      await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&APPID=d7168e14fa082edb3e698effb29c53ae`)
       .then(res => res.json())
       .then(result => {
         setData(result)
